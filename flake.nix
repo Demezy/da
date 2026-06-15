@@ -32,7 +32,10 @@
           version = cargoToml.package.version;
 
           nativeBuildInputs = [ pkgs.pkg-config ];
-          buildInputs = [ onnxruntime ];
+          buildInputs = [
+            onnxruntime
+            pkgs.openssl
+          ];
           ORT_LIB_PATH = "${onnxruntime}/lib";
           ORT_PREFER_DYNAMIC_LINK = "1";
           RUSTFLAGS = "-C link-arg=-Wl,-rpath,${onnxruntime}/lib";
